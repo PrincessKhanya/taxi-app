@@ -62,11 +62,10 @@ tr:nth-child(even) {
 }
 
 .footer {
-    background-color: #f6e9e4;
+    background-color: #f28482;
     margin: auto;
     text-align: center;
     font-weight: 200;
-    
 }
 
 .social {

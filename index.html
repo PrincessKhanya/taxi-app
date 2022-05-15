@@ -13,9 +13,9 @@
     <div class="container" x-data="taxiRank()">
         <h1>Taxi App</h1>
         <div>
-            Total profit for that day: <span></span>
+            Total profit for that day: <span x-text="taxiData.taxiFareTotal"></span>
             <br>
-            Number of queues: <span></span>
+            Number of queues: <span x-text="taxiData.length"></span>
         </div>
         <br>
     
