@@ -1,0 +1,99 @@
+body{
+    text-align: center;
+    background-color: #06d6a0;
+}
+
+.addBtn{
+    background-color: #116a52;
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 5%;
+    color: white;
+}
+
+.subBtn{
+    background-color: #ef476f;
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 5%;
+    color: white;
+}
+
+.button{
+    background-color: #15414f;
+    height: 2.5em;
+    width: 5em;
+    border-radius: 5%;
+    color: white;
+
+}
+
+.number{
+    height: 2.5em;
+    width: 2.5em;
+    font-family: cursive;
+    color: #fff;
+    font-size: larger;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    
+}
+
+.buyBtn {
+    font-weight: 400;
+    width: 15em;
+    height: 3em;
+
+}
+  
+td, th {
+    border: 1px solid #118ab2;
+    text-align: left;
+    padding: 8px;
+    text-align: center;
+}
+  
+tr:nth-child(even) {
+    background-color: #118ab2;
+}
+
+.footer {
+    background-color: #f6e9e4;
+    margin: auto;
+    text-align: center;
+    font-weight: 200;
+    
+}
+
+.social {
+    text-align: center;
+    display: flex;
+}
+
+.social li {
+    list-style: none;
+    margin: 0em;
+    padding: 0em;
+    flex: 1;
+    
+}
+
+.social a {
+    padding: 0.1em;
+    display: block;
+    width: 6em;
+
+
+}
+
+.social a:hover {
+    background-color: #ee6120;
+    transform: scale(1.2);
+}
+
+
+
