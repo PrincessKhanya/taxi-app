@@ -10,147 +10,110 @@
     <script src="script.js"></script>
 </head>
 <body>
-        <div class="container" x-data="taxiRank()">
-            <h1>Taxi App</h1>
-            <div>
-                Total profit for that day: <span x-text="total"></span>
-                <br>
-                Number of queues: <span></span>
-            </div>
+    <div class="container" x-data="taxiRank()">
+        <h1>Taxi App</h1>
+        <div>
+            Total profit for that day: <span></span>
             <br>
-        
-            <table>
-                <thead>
-                    <tr>
-                        <th>Departure</th>
-                        <th>Destination</th>
-                        <th>Passagers</th>
-                        <th>Taxi trip</th>
-                        <th>Taxi Fare</th>
-                        <th>Total Fare</th>
-                        <th>Taxi available</th>
-                    </tr>
-
-                </thead>
-                <tbody>
-                    <template x-for="taxi in taxiData">
-                        <tr>
-                            <td><span>Cape Town</span></td>
-                            <td><span x-text="taxi.destination"></span></td>
-                            <td>
-                                <button class="addBtn" @click="taxi.passagers++">+</button>
-                                <span class="number" x-text="taxi.passagers">1</span>
-                                <button class="subBtn" @click="taxi.passagers>=1 ? taxi.passagers--: taxi.passagers=0">-</button>
-                            </td>
-                            <td>
-                                <template x-if="taxi.passagers>=15">
-                                    <button class="button" @click="taxi.passagers=taxi.passagers-15, taxi.departTaxi++, taxi.taxiFareTotal=(taxi.departTaxi*15*taxi.taxiFare),taxi.availableTaxis--">Leave</button>
-                                </template>
-                                <template x-if="taxi.passagers<=14">
-                                    <button class="button" disabled @click="taxi.passagers=taxi.passagers-15, taxi.departTaxi++">Leave</button>
-                                </template>
-                                <span class="number" x-text="taxi.departTaxi"></span>   
-                            </td>
-                            <td><span class="number" x-text="taxi.taxiFare"></span></td>
-                            <td><span class="number" x-text="taxi.taxiFareTotal">R25</span></td>
-                            <td><span class="number" x-text="taxi.availableTaxis"></span>
-                            </td> 
-                        </tr>
-                    </template>
-                </tbody>
-            </table>
-            <br>
-            <br>
-            <div x-data="{ route: false }">
-                <button @click="route=!route" x-text="route ? 'Cancel' : 'Add Route'" class="buyBtn"></button>
-                <button class="buyBtn">Add Taxi</button>
-                <br>
-                <br>
-                <div x-show.transition="route" x-data="{todos:[], destinationInput: '', taxiFare:'', availTaxi:''}">
-                    <form x-on:submit.prevent>
-                        <label>Destination:</label>
-                        <input x-model="destinationInput"   type="text" class="buyBtn" placeholder="Enter the destination">
-                        <br>
-                        <br>
-                        <label>Taxi Fare:</label>
-                        <input x-model="taxiFare"  type="text" class="buyBtn" placeholder="Enter the taxi fare">
-                        <br>
-                        <br>
-                        <label>Number of taxi available:</label>
-                        <input  x-model="availTaxi" type="text" class="buyBtn" placeholder="Enter the number of taxi available">
-                        <br>
-                        <br>
-                        <button  @click="todos.push({destination: destinationInput, fare: taxiFare, taxis:availTaxi})" class="buyBtn" x-effect="console.log(todos)">Add</button>
-                        <br>
-                    </form>
-                    <br>
-                    <table>
-                        <tr>
-                            <th>Departure</th>
-                            <th>Destination</th>
-                            <th>Passagers</th>
-                            <th>Taxi trip</th>
-                            <th>Taxi Fare</th>
-                            <th>Total Fare</th>
-                            <th>Taxi available</th>
-                        </tr>  
-                    </table>
-                    <template x-for="todo in todos">
-                        <table>
-                            <tr>
-                                <td><span>Cape Town</span></td>
-                                <td><span x-text="todo.destination"></span></td>
-                                <td>
-                                    <button class="addBtn" @click="addItem()">+</button>
-                                    <span class="number" x-text="passagers">1</span>
-                                    <button class="subBtn" @click="subItem()">-</button>
-                                </td>
-                                <td>
-                                    <button class="button" @click="departedTaxis()">Leave</button>
-                                    <span class="number" x-text="departTaxi"></span>   
-                                </td>
-                                <td><span class="number" x-text="todo.fare"></span></td>
-                                <td><span class="number" x-text="price">R25</span></td>
-                                <td><span class="number" x-text="todo.taxis"></span></td>
-                            </tr>   
-                        </table>
-                         
-                    </template>
-                </div>  
-            </div>
-    
-            <div class="box footer">
-                <h3>Contact details</h3>
-    
-                <ul class="social">
-                    <li>
-                        <a href="https://www.facebook.com" target="_blank"><img src="5b8b9c0d8b8dbc20c53eed722860f42e.png"
-                                alt="Facebook logo" width="50"></a>
-                    </li>
-                    <li>
-                        <a href="https://www.twitter.com" target="_blank"><img src="225132.png" alt="Twittwe logo"
-                                width="50"></a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com" target="_blank"><img src="insta-logo.png" alt="Instagram logo"
-                                width="50"></a>
-                    </li>
-                    <li>
-                        <a href="011 899 7999" target="_blank"><img src="phone-1912209-1617678.png" alt="Phone logo"
-                                width="50"></a>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com " target="_blank"><img
-                                src="uploads_gmail_logo_gmail_logo_PNG12-364x364.png" alt="Email logo" width="50"></a>
-                    </li>
-                </ul>
-            </div>
+            Number of queues: <span></span>
         </div>
-        
+        <br>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Departure</th>
+                    <th>Destination</th>
+                    <th>Passagers</th>
+                    <th>Taxi trip</th>
+                    <th>Taxi Fare</th>
+                    <th>Total Fare</th>
+                    <th>Taxi available</th>
+                </tr>
 
+            </thead>
+            <tbody>
+                <template x-for="taxi in taxiData">
+                    <tr>
+                        <td><span>Cape Town</span></td>
+                        <td><span x-text="taxi.destination"></span></td>
+                        <td>
+                            <button class="addBtn" @click="taxi.passagers++">+</button>
+                            <span class="number" x-text="taxi.passagers">1</span>
+                            <button class="subBtn" @click="taxi.passagers>=1 ? taxi.passagers--: taxi.passagers=0">-</button>
+                        </td>
+                        <td>
+                            <template x-if="taxi.passagers>=15">
+                                <button class="button" @click="taxi.passagers=taxi.passagers-15, taxi.departTaxi++, taxi.taxiFareTotal=(taxi.departTaxi*15*taxi.taxiFare),taxi.availableTaxis--">Leave</button>
+                            </template>
+                            <template x-if="taxi.passagers<=14">
+                                <button class="button" disabled @click="taxi.passagers=taxi.passagers-15, taxi.departTaxi++">Leave</button>
+                            </template>
+                            <span class="number" x-text="taxi.departTaxi"></span>   
+                        </td>
+                        <td><span class="number" x-text="taxi.taxiFare"></span></td>
+                        <td><span class="number" x-text="taxi.taxiFareTotal">R25</span></td>
+                        <td><span class="number" x-text="taxi.availableTaxis"></span>
+                        </td> 
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <div x-data="{ route: false }">
+            <button @click="route=!route" x-text="route ? 'Cancel' : 'Add Route'" class="buyBtn"></button>
+            <button class="buyBtn">Add Taxi</button>
+            <br>
+            <br>
+            <div x-show.transition="route" x-data="{taxiData, destinationInput: '', taxiFare:'', availTaxi:''}">
+                <form x-on:submit.prevent>
+                    <label>Destination:</label>
+                    <input x-model="destinationInput"   type="text" class="buyBtn" placeholder="Enter the destination">
+                    <br>
+                    <br>
+                    <label>Taxi Fare:</label>
+                    <input x-model="taxiFare"  type="text" class="buyBtn" placeholder="Enter the taxi fare">
+                    <br>
+                    <br>
+                    <label>Number of taxi available:</label>
+                    <input  x-model="availTaxi" type="text" class="buyBtn" placeholder="Enter the number of taxi available">
+                    <br>
+                    <br>
+                    <button  @click="taxiData.push({destination: destinationInput,passagers:0, departTaxi: 0, taxiFare: taxiFare, taxiFareTotal: 0, availableTaxis:availTaxi})" class="buyBtn" x-effect="console.log(taxiData)">Add</button>
+                    <br>
+                </form>
+                <br>
+            </div>  
+        </div>
 
+        <div class="box footer">
+            <h3>Contact details</h3>
 
-
+            <ul class="social">
+                <li>
+                    <a href="https://www.facebook.com" target="_blank"><img src="5b8b9c0d8b8dbc20c53eed722860f42e.png"
+                            alt="Facebook logo" width="50"></a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com" target="_blank"><img src="225132.png" alt="Twittwe logo"
+                            width="50"></a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com" target="_blank"><img src="insta-logo.png" alt="Instagram logo"
+                            width="50"></a>
+                </li>
+                <li>
+                    <a href="011 899 7999" target="_blank"><img src="phone-1912209-1617678.png" alt="Phone logo"
+                            width="50"></a>
+                </li>
+                <li>
+                    <a href="https://www.google.com " target="_blank"><img
+                            src="uploads_gmail_logo_gmail_logo_PNG12-364x364.png" alt="Email logo" width="50"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
 </html>
