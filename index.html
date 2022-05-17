@@ -43,7 +43,7 @@
                             <button class="subBtn" @click="taxi.passagers>=1 ? taxi.passagers--: taxi.passagers=0">-</button>
                         </td>
                         <td>
-                            <template x-if="taxi.passagers>=15">
+                            <template x-if="taxi.passagers>=15 && taxi.availableTaxis>0">
                                 <button class="button" @click="taxi.passagers=taxi.passagers-15, taxi.departTaxi++, taxi.taxiFareTotal=(taxi.departTaxi*15*taxi.taxiFare),taxi.availableTaxis--">Leave</button>
                             </template>
                             <template x-if="taxi.passagers<=14">
