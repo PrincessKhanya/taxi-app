@@ -12,10 +12,12 @@
 <body>
     <div class="container" x-data="taxiRank()">
         <h1>Taxi App</h1>
+        <h4>A taxi can only leave if there is 15 people</h4>
         <div>
             Total profit for that day: <span x-text="taxiData.taxiFareTotal"></span>
             <br>
             Number of queues: <span x-text="taxiData.length"></span>
+            
         </div>
         <br>
     
