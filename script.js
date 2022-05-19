@@ -4,6 +4,13 @@ const taxiRank = () => {
             { destination: 'Makhaza', passagers: 12, departTaxi: 0, taxiFare: 12.00, taxiFareTotal: 0, availableTaxis:3},
             { destination: 'Belhar', passagers: 34, departTaxi: 0, taxiFare: 15.00, taxiFareTotal: 0, availableTaxis:3 },
             { destination: 'Bellville', passagers: 23, departTaxi: 0, taxiFare: 10.00, taxiFareTotal: 0, availableTaxis:3 }],
+        total: 0,
+        taxiTotal: function(){
+            total=_.sumBy(taxiData, function(taxi) {return taxi.taxiFareTotal})
+            return total
+
+        },
+        
         // passagers: 0,
         // maxPassager:5,
         // price: 0,

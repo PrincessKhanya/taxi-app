@@ -14,7 +14,7 @@
         <h1>Taxi App</h1>
         <h4>A taxi can only leave if there is 15 people</h4>
         <div>
-            Total profit for that day: <span x-text="taxiData.taxiFareTotal"></span>
+            Total profit for that day: <span  x-text="total"></span>
             <br>
             Number of queues: <span x-text="taxiData.length"></span>
             
@@ -54,8 +54,8 @@
                             <span class="number" x-text="taxi.departTaxi"></span>   
                         </td>
                         <td><span class="number" x-text="taxi.taxiFare"></span></td>
-                        <td><span class="number" x-text="taxi.taxiFareTotal">R25</span></td>
-                        <td><span class="number" x-text="taxi.availableTaxis"></span>
+                        <td><span class="number">R</span><span class="number" x-text="taxi.taxiFareTotal">R25</span></td>
+                        <td><button class="button" @click="taxi.availableTaxis++">Add taxi</button><span class="number" x-text="taxi.availableTaxis"></span>
                         </td> 
                     </tr>
                 </template>
@@ -65,7 +65,6 @@
         <br>
         <div x-data="{ route: false }">
             <button @click="route=!route" x-text="route ? 'Cancel' : 'Add Route'" class="buyBtn"></button>
-            <button class="buyBtn">Add Taxi</button>
             <br>
             <br>
             <div x-show.transition="route" x-data="{taxiData, destinationInput: '', taxiFare:'', availTaxi:''}">
