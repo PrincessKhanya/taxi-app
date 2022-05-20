@@ -8,19 +8,20 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style1.css">
     <script src="script.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
     <div class="container" x-data="taxiRank()">
         <h1>Taxi App</h1>
         <h4>A taxi can only leave if there is 15 people</h4>
         <div>
-            Total profit for that day: <span  x-text="total"></span>
+            Total profit for that day: <span  x-text="taxiData.taxiFareTotal"></span>
             <br>
             Number of queues: <span x-text="taxiData.length"></span>
             
         </div>
         <br>
-    
+       
         <table>
             <thead>
                 <tr>
@@ -68,20 +69,20 @@
             <br>
             <br>
             <div x-show.transition="route" x-data="{taxiData, destinationInput: '', taxiFare:'', availTaxi:''}">
-                <form x-on:submit.prevent>
+                <form x-on:submit.prevent id="my_form">
                     <label>Destination:</label>
-                    <input x-model="destinationInput"   type="text" class="buyBtn" placeholder="Enter the destination">
+                    <input x-model="destinationInput"   type="text" id="destinationInput" class="buyBtn" placeholder="Enter the destination">
                     <br>
                     <br>
                     <label>Taxi Fare:</label>
-                    <input x-model="taxiFare"  type="text" class="buyBtn" placeholder="Enter the taxi fare">
+                    <input x-model="taxiFare"  type="number" id="taxiFare" class="buyBtn" placeholder="Enter the taxi fare">
                     <br>
                     <br>
                     <label>Number of taxi available:</label>
-                    <input  x-model="availTaxi" type="text" class="buyBtn" placeholder="Enter the number of taxi available">
+                    <input  x-model="availTaxi" type="number" id="availTaxi" class="buyBtn" placeholder="Enter the number of taxi available">
                     <br>
                     <br>
-                    <button  @click="taxiData.push({destination: destinationInput,passagers:0, departTaxi: 0, taxiFare: taxiFare, taxiFareTotal: 0, availableTaxis:availTaxi})" class="buyBtn" x-effect="console.log(taxiData)">Add</button>
+                    <button  @click="addRoutes()" class="buyBtn"  type="submit">Add</button>
                     <br>
                 </form>
                 <br>
@@ -115,6 +116,9 @@
             </ul>
         </div>
     </div>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+    
+    
 </body>
 </html>
